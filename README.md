@@ -33,18 +33,23 @@ You can press:
 
 # Configuration
 
-- Edit `~/.tmux/tmux-picker/tmux-picker.tmux`, where you can change:
-    - `PICKER_KEY` (default <kbd>Meta</kbd> + <kbd>F</kbd>, without the prefix)
-    - `PATTERNS_LIST1` - regex patterns highlighted after pressing `PICKER_KEY`
-    - `PATTERNS_LIST2` - regex patterns highlighted after pressing <kbd>SPACE</kbd> in hint mode 
-    - `BLACKLIST` - regex pattern describing items that will not be highlighted
-    - `PICKER_COPY_COMMAND` - command to execute on highlighted item
-        - default is: `xclip -f -in -sel primary | xclip -in -sel clipboard`, which copies item to clipboard
-    - `PICKER_COPY_COMMAND_UPPERCASE` - command to execute on highlighted item, when hint was typed using uppercase letters
-        - default is `bash -c 'arg=\$(cat -); tmux split-window -h -c \"#{pane_current_path}\" vim \"\$arg\"'`, which executes `vim` in a sidebar
-    - `PICKER_HINT_FORMAT` - describes hint color/style.
-        - Default is `#[fg=black,bg=red,bold]`, but `#[fg=color0,bg=color202,dim,bold]%s` is IMO better if your terminal supports 256 colors
-    - `PICKER_HIGHLIGHT_FORMAT` - describes highlighted item color/style
+Select a custom key binding by setting the `PICKER_KEY` environment variable. For example to set change the binding to <kbd>F</kbd> with the prefix add this line to your `~/.tmux.conf`:
+
+    setenv -g PICKER_KEY 'F'
+
+Or you can edit variables directly in the `~/.tmux/tmux-picker/tmux-picker.tmux` script. You can change:
+
+- `PICKER_KEY` (default <kbd>Meta</kbd> + <kbd>F</kbd>, without the prefix)
+- `PATTERNS_LIST1` - regex patterns highlighted after pressing `PICKER_KEY`
+- `PATTERNS_LIST2` - regex patterns highlighted after pressing <kbd>SPACE</kbd> in hint mode
+- `BLACKLIST` - regex pattern describing items that will not be highlighted
+- `PICKER_COPY_COMMAND` - command to execute on highlighted item
+    - default is: `xclip -f -in -sel primary | xclip -in -sel clipboard`, which copies item to clipboard
+- `PICKER_COPY_COMMAND_UPPERCASE` - command to execute on highlighted item, when hint was typed using uppercase letters
+    - default is `bash -c 'arg=\$(cat -); tmux split-window -h -c \"#{pane_current_path}\" vim \"\$arg\"'`, which executes `vim` in a sidebar
+- `PICKER_HINT_FORMAT` - describes hint color/style.
+    - Default is `#[fg=black,bg=red,bold]`, but `#[fg=color0,bg=color202,dim,bold]%s` is IMO better if your terminal supports 256 colors
+- `PICKER_HIGHLIGHT_FORMAT` - describes highlighted item color/style
 
 # Requirements
 
